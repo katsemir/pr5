@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'app_button.dart';
-import 'app_input.dart';
-import 'app_select.dart';
+import 'widgets/app_button.dart';
+import 'widgets/app_input.dart';
+import 'widgets/app_select.dart';
+import 'widgets/animated_counter.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-// --- Головний додаток ---
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// --- Demo UI Сторінка ---
 class DemoUI extends StatefulWidget {
   @override
   _DemoUIState createState() => _DemoUIState();
@@ -38,6 +37,7 @@ class _DemoUIState extends State<DemoUI> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // --- AppButton Examples ---
               Text('AppButton examples:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               AppButton(
@@ -56,17 +56,16 @@ class _DemoUIState extends State<DemoUI> {
                 type: ButtonType.online,
               ),
               SizedBox(height: 20),
+
+              // --- AppInput Examples ---
               Text('AppInput examples:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
-              AppInput(
-                hintText: 'Enter your name',
-              ),
+              AppInput(hintText: 'Enter your name'),
               SizedBox(height: 10),
-              AppInput(
-                hintText: 'Enter your email',
-                borderColor: Colors.green,
-              ),
+              AppInput(hintText: 'Enter your email', borderColor: Colors.green),
               SizedBox(height: 20),
+
+              // --- AppSelect Examples ---
               Text('AppSelect examples:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               AppSelect(
@@ -75,6 +74,18 @@ class _DemoUIState extends State<DemoUI> {
                 onChanged: (val) => setState(() => selectedValue = val),
                 hint: 'Select an option',
               ),
+              SizedBox(height: 20),
+
+              // --- AnimatedCounter Example ---
+              Text('Animated Counter Example:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              AnimatedCounter(
+                initialValue: 10,
+                maxValue: 50,
+                primaryColor: Colors.green,
+                animationDuration: Duration(milliseconds: 300),
+              ),
+              SizedBox(height: 30),
             ],
           ),
         ),
